@@ -105,11 +105,6 @@ void count_words(std::istream& stream, Counter& counter) {
 }
 
 bool count_file(std::string filename, Counter& freq_dict) {
- /*   {
-        std::osyncstream synccerr(std::cerr);
-        synccerr << "Count_file " << filename << '\n';
-    }*/
-
     std::ifstream input{filename};
     if (!input.is_open()) {
         std::osyncstream synccerr(std::cerr);
