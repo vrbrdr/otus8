@@ -130,9 +130,8 @@ bool threadsafe_count_file(const char* filename, Counter& freq_dict) {
 
     Counter current_freq_dict;
     if (count_file(filename, current_freq_dict)) {
-
+        std::lock_guard g{m};
         for (auto& dict_item_pair : current_freq_dict) {
-            std::lock_guard g{m};
             freq_dict[dict_item_pair.first] += dict_item_pair.second;
         }
 
